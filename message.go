@@ -338,13 +338,13 @@ type PFCPSessionEstablishmentResponse struct {
 	Cause                      *pfcpType.Cause             `tlv:"19"`
 	OffendingIE                *pfcpType.OffendingIE       `tlv:"40"`
 	UPFSEID                    *pfcpType.FSEID             `tlv:"57"`
-	CreatedPDR                 *CreatedPDR                 `tlv:"8"`
+	CreatedPDR                 []*CreatedPDR               `tlv:"8"`
 	LoadControlInformation     *LoadControlInformation     `tlv:"51"`
 	OverloadControlInformation *OverloadControlInformation `tlv:"54"`
 	SGWUFQCSID                 *pfcpType.FQCSID            `tlv:"65"`
 	PGWUFQCSID                 *pfcpType.FQCSID            `tlv:"65"`
 	FailedRuleID               *pfcpType.FailedRuleID      `tlv:"114"`
-	CreatedTrafficEndpoint     *CreatedTrafficEndpoint     `tlv:"128"`
+	CreatedTrafficEndpoint     []*CreatedTrafficEndpoint   `tlv:"128"`
 }
 
 type CreatedPDR struct {
@@ -524,15 +524,16 @@ type RemoveTrafficEndpoint struct {
 }
 
 type PFCPSessionModificationResponse struct {
-	Cause                             *pfcpType.Cause                             `tlv:"19"`
-	OffendingIE                       *pfcpType.OffendingIE                       `tlv:"40"`
-	CreatedPDR                        *CreatedPDR                                 `tlv:"8"`
-	LoadControlInformation            *LoadControlInformation                     `tlv:"51"`
-	OverloadControlInformation        *OverloadControlInformation                 `tlv:"54"`
-	UsageReport                       *UsageReportPFCPSessionModificationResponse `tlv:"78"`
-	FailedRuleID                      *pfcpType.FailedRuleID                      `tlv:"114"`
-	AdditionalUsageReportsInformation *pfcpType.AdditionalUsageReportsInformation `tlv:"126"`
-	CreatedUpdatedTrafficEndpoint     *CreatedTrafficEndpoint                     `tlv:"128"`
+	Cause                             *pfcpType.Cause                               `tlv:"19"`
+	OffendingIE                       *pfcpType.OffendingIE                         `tlv:"40"`
+	CreatedPDR                        *CreatedPDR                                   `tlv:"8"`
+	LoadControlInformation            *LoadControlInformation                       `tlv:"51"`
+	OverloadControlInformation        *OverloadControlInformation                   `tlv:"54"`
+	UsageReport                       []*UsageReportPFCPSessionModificationResponse `tlv:"78"`
+	FailedRuleID                      *pfcpType.FailedRuleID                        `tlv:"114"`
+	AdditionalUsageReportsInformation *pfcpType.AdditionalUsageReportsInformation   `tlv:"126"`
+	CreatedUpdatedTrafficEndpoint     *CreatedTrafficEndpoint                       `tlv:"128"`
+	UpdatedPDR                        []*CreatedPDR                                 `tlv:"256"`
 }
 
 type UsageReportPFCPSessionModificationResponse struct {
